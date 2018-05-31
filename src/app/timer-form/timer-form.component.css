@@ -1,0 +1,10 @@
+.timer-wrapper {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.timer-wrapper .grid-col {
+    padding-right: 5px;
+    padding-left: 5px;
+}
+

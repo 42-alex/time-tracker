@@ -1,3 +1,57 @@
-<p>
-  timer-form works!
-</p>
+<section class="timer-wrapper">
+  <form (ngSubmit)="submitForm()" #timerFormRef="ngForm">
+    <div class="row">
+      <div class="col-lg-6 grid-col">
+        <input
+          type="text"
+          class="form-control"
+          [ngClass]="{'is-invalid': taskName.invalid && taskName.touched || taskName.invalid && timerFormRef.submitted}"
+          name="taskName"
+          placeholder="What are you working on?"
+          ngModel
+          #taskName="ngModel"
+          required
+        >
+        <p *ngIf="taskName.invalid && (taskName.touched || timerFormRef.submitted)" class="text-danger">* это поле обязательно для заполнения</p>
+      </div>
+      <div class="col-lg-2 grid-col">
+        <select
+          class="custom-select"
+          [ngClass]="{'is-invalid': projectName.invalid && projectName.touched || projectName.invalid && timerFormRef.submitted}"
+          name="projectName"
+          ngModel
+          #projectName="ngModel"
+          required
+        >
+          <option value="">select project</option>
+          <option *ngFor="let name of projectNames" value="{{ name.value }}">{{ name.label }}</option>
+        </select>
+        <p *ngIf="projectName.invalid && (projectName.touched || timerFormRef.submitted)" class="text-danger text-center">* это поле обязательно для заполнения</p>
+      </div>
+      <div class="col-lg-2 grid-col">
+        <input
+          type="text"
+          class="form-control text-right"
+          name="timeCounter"
+          [ngModel]="timerValueDisplay"
+        >
+      </div>
+      <div class="col-lg-2 grid-col">
+        <button
+          class="btn btn-success btn-block"
+          type="submit"
+          *ngIf="!isTimerStarted; else stopButton"
+        >
+          Start
+        </button>
+        <ng-template #stopButton>
+          <button
+            class="btn btn-danger btn-block"
+            (click)="stopTimer()">
+            Stop
+          </button>
+        </ng-template>
+      </div>
+    </div>
+  </form>
+</section>
