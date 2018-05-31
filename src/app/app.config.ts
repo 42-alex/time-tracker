@@ -17,4 +17,5 @@ export const AppConfig = {
             label: 'Meditation'
         },
     ]
-};
+}
+
