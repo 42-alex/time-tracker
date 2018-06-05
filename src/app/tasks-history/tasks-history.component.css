@@ -1,0 +1,46 @@
+.history-wrapper {
+  margin-top: 50px;
+}
+.history_task-title {
+  font-size: 24px;
+}
+.history_project-name-wrap {
+  height: 25px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #0441A3;
+}
+.history_project-name {
+  display: inline-block;
+  height: 100%;
+  vertical-align: -webkit-baseline-middle;
+}
+.history_play-button {
+  float: right;
+  background: url('/assets/images/play.svg') -4px -3px;
+  background-size: 33px;
+  width: 20px;
+  height: 25px;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+.history_play-button:active,
+.history_play-button:focus {
+  outline: none;
+}
+.history_time-spent {
+  font-weight: 500;
+}
+.history-item {
+  margin-bottom: 20px;
+}
+
+@media (min-width: 991px) {
+  .history_time-spent {
+    text-align: right;
+  }
+  .history_time-range {
+    text-align: center;
+  }
+}

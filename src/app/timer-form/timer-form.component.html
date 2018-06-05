@@ -24,17 +24,19 @@
           required
         >
           <option value="">select project</option>
-          <option *ngFor="let name of projectNames" value="{{ name.value }}">{{ name.label }}</option>
+          <option *ngFor="let name of projectNames | keys" value="{{ name.key }}">{{ name.title }}</option>
         </select>
         <p *ngIf="projectName.invalid && (projectName.touched || timerFormRef.submitted)" class="text-danger text-center">* это поле обязательно для заполнения</p>
       </div>
-      <div class="col-lg-2 grid-col">
+      <div class="col-lg-2 grid-col grid-col__time-counter-wrap">
         <input
           type="text"
           class="form-control text-right"
           name="timeCounter"
           [ngModel]="timerValueDisplay"
+          readonly
         >
+        <span class="time-counter_icon" [ngClass]="{'blink': isTimerStarted}">&nbsp;</span>
       </div>
       <div class="col-lg-2 grid-col">
         <button

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { TasksService } from "../tasks.service";
+import { AppConfig } from "../app.config";
 
 @Component({
   selector: 'app-tasks-history',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TasksHistoryComponent implements OnInit {
 
-  constructor() { }
+	@Output() onContinueTask = new EventEmitter<{}>();
+  projectNames = {};
+  tasks = [];
 
-  ngOnInit() {
-  }
+  constructor(private taskService: TasksService) {}
+
+	ngOnInit() {
+		this.tasks = this.taskService.tasks;
+    this.projectNames =  AppConfig.projectNames;
+	}
+
+	onPlayClick(taskName, projectName) {
+    this.onContinueTask.emit({"startDate": +new Date(), "taskName": taskName, "projectName": projectName});
+	}
 
 }

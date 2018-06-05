@@ -1,3 +1,24 @@
-<p>
-  tasks-history works!
-</p>
+<section class="history-wrapper">
+  <div *ngFor="let task of tasks; let idx=index" class="history-item">
+    <div *ngIf="((task | appDatedisplay:'start') !== (tasks[idx-1] | appDatedisplay:'start'))">
+      <h2>{{ task | appDatedisplay:'start' }}</h2>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 grid-col history_task-title">
+        {{ task.taskName }}
+      </div>
+      <div class="col-lg-2 grid-col history_project-name-wrap">
+        <span class="history_project-name">{{ projectNames[task.projectName] }}</span>
+        <button class="history_play-button" (click)="onPlayClick(task.taskName, task.projectName)">
+          &nbsp;
+        </button>
+      </div>
+      <div class="col-lg-2 grid-col history_time-spent">
+        {{ task | appDatedisplay:'spent' }}
+      </div>
+      <div class="col-lg-2 grid-col history_time-range">
+        {{ task | appDatedisplay:'range' }}
+      </div>
+    </div>
+  </div>
+</section>

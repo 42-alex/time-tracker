@@ -1,11 +1,37 @@
 .timer-wrapper {
-    margin-top: 20px;
-    margin-bottom: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
-
 .timer-wrapper .grid-col {
-    padding-right: 5px;
-    padding-left: 5px;
+  padding-right: 5px;
+  padding-left: 5px;
 }
-
-
+.grid-col__counter-wrap {
+  position: relative;
+}
+.grid-col__time-counter-wrap .form-control[readonly] {
+  background-color: #fff;
+}
+.time-counter_icon {
+  position: absolute;
+  top: 5px;
+  left: 9px;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+}
+.blink {
+  -webkit-animation: blink 2s linear infinite;
+  animation: blink 2s linear infinite;
+}
+@-webkit-keyframes blink {
+  50% { background-color: rgb(255, 0, 0); }
+  51% { background-color: rgba(255, 0, 0, 0); }
+  100% { background-color: rgba(255, 0, 0, 0); }
+}
+@keyframes blink {
+  50% { background-color: rgb(255, 0, 0); }
+  51% { background-color: rgba(255, 0, 0, 0); }
+  100% { background-color: rgba(255, 0, 0, 0); }
+}
